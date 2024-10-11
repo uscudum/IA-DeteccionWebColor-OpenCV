@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Detection</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.0/socket.io.js"></script>
+    <script type="text/javascript">
+        document.addEventListener('DOMContentLoaded', (event) => {
+            // Conectar al servidor de WebSockets
+            var socket = io();
+
+            // Escuchar el evento 'color_detected' desde el servidor
+            socket.on('color_detected', function(data) {
+                document.getElementById('status').innerText = data.message;
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>Detección de Color</h1>
+    <p id="status">No se ha detectado el color azul</p>
+</body>
+</html>
